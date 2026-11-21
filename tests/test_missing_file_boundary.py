@@ -40,15 +40,26 @@ def reconstruct(*, split):
         decision = seed(db, "recipe-import", recipe.import_data, {"revisions": [revision]})[0]
         records = [tuple(row) for row in db.execute("SELECT * FROM evidence ORDER BY rowid")]
         files = [tuple(row) for row in db.execute("SELECT * FROM file_journal ORDER BY id")]
-        assert report.audit(db) == {"ok": False, "files": 4}
-        return decision["state"], records, files
+        result = report.audit(db)
+        assert result["ok"] is False and result["files"] == 4
+        return decision["state"], records, files, result
     finally:
         db.close()
 
 
 def test_equal_surviving_originals_do_not_prove_import_boundary():
-    grouped, grouped_items, grouped_files = reconstruct(split=False)
-    separate, separate_items, separate_files = reconstruct(split=True)
+    grouped, grouped_items, grouped_files, grouped_audit = reconstruct(split=False)
+    separate, separate_items, separate_files, separate_audit = reconstruct(split=True)
     assert (grouped, separate) == ("approved", "rework_approval_pending")
     assert grouped_items == separate_items
     assert grouped_files == separate_files
+    # the enhanced audit is machine-independent: identical surviving evidence
+    # yields identical findings, and both legal histories are replayed for real
+    assert grouped_audit == separate_audit
+    audit = grouped_audit
+    assert audit["business_proof"]["status"] == "indeterminate"
+    assert set(audit["business_proof"]["candidate_values"]) == {
+        "approved", "rework_approval_pending"}
+    assert {h["recipe_state"] for h in audit["possible_histories"]} == {
+        "approved", "rework_approval_pending"}
+    assert audit["file_proof"]["status"] == "missing"
