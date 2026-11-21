@@ -1,0 +1,14 @@
+{
+  "records":[
+    {"id":"RAW-1","order_id":"ORDER-1","instrument_id":"METER-1","at":"2026-01-17","replicate":1,"register":14,"block":"Q1"}
+  ],
+  "register_file_excerpt":{
+    "legacy_session":"Q1",
+    "anchors":[{"record":"last-absolute","value":11}],
+    "raw_sequence":[14,1],
+    "pagination_break_after":14,
+    "schemes":["absolute-sample","signed-differences"],
+    "safe_bench_probes":[{"seed":0,"test":4},{"seed":10,"test":4}],
+    "format_not_claimed":true
+  }
+}
