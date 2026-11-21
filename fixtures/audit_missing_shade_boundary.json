@@ -1,0 +1,9 @@
+{
+ "first": {
+   "id":"SAMPLE-FLAG","order_id":"ORDER-1","instrument_id":"METER-1","at":"2026-01-17","delta_e":3.0,"replicate":1
+ },
+ "second": {
+   "id":"SAMPLE-CLEAR","order_id":"ORDER-1","instrument_id":"METER-1","at":"2026-01-18","delta_e":1.0,"replicate":1
+ },
+ "followup_id":"RECIPE-FACTORY-V2"
+}

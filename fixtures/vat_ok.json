@@ -1,0 +1,22 @@
+{
+  "vats": [
+    {
+      "id": "VAT-1",
+      "capacity_kg": 120,
+      "previous_shade": "black",
+      "cleaned_at": "2026-01-10"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "RES-1",
+      "order_id": "ORDER-1",
+      "vat_id": "VAT-1",
+      "start": "2026-01-15",
+      "end": "2026-01-16",
+      "qty_kg": 90,
+      "priority": 5,
+      "at": "2026-01-11"
+    }
+  ]
+}

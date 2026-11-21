@@ -1,0 +1,34 @@
+{
+  "contracts": [
+    {
+      "id": "contract-A",
+      "customer": "fictional-client",
+      "order_id": "ORDER-1",
+      "shade": "ivory",
+      "start": "2026-01-01",
+      "end": "2026-03-01",
+      "threshold": 2.0,
+      "signed_by": "customer"
+    }
+  ],
+  "lots": [
+    {
+      "id": "LOT-1",
+      "shade": "ivory",
+      "available_kg": 100,
+      "expires": "2026-04-01"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "RECIPE-1",
+      "order_id": "ORDER-1",
+      "version": 1,
+      "at": "2026-01-10",
+      "lot": "LOT-1",
+      "qty_kg": 90,
+      "shade": "ivory",
+      "approved_by": "customer"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "instruments": [
+    {
+      "id": "METER-2",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-01-15",
+      "operator": "lab"
+    }
+  ],
+  "samples": [
+    {
+      "id": "SAMPLE-3",
+      "order_id": "ORDER-1",
+      "instrument_id": "METER-2",
+      "at": "2026-01-16",
+      "delta_e": 2.5,
+      "replicate": 1
+    },
+    {
+      "id": "SAMPLE-4",
+      "order_id": "ORDER-1",
+      "instrument_id": "METER-2",
+      "at": "2026-01-16",
+      "delta_e": 1.4,
+      "replicate": 2
+    }
+  ]
+}
