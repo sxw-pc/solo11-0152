@@ -3,7 +3,7 @@ from pathlib import Path
 from .store import connect
 from .source import read,file_record
 from . import recipe,vat,shade,report,legacy_capture
-HANDLERS={'recipe-import':recipe.import_data,'vat-plan':vat.import_data,'shade-import':shade.import_data,'register-import':legacy_capture.import_data}
+HANDLERS={'recipe-import':recipe.import_data,'vat-plan':vat.import_data,'shade-import':shade.import_data,'register-import':legacy_capture.import_data,'register-archive':legacy_capture.apply_archive,'register-diagnose':legacy_capture.apply_diagnostic}
 def main():
     p=argparse.ArgumentParser(prog='dyebatch');p.add_argument('command',choices=[*HANDLERS,'demo','report','audit']);p.add_argument('--db',default='state.sqlite');p.add_argument('--input');a=p.parse_args();db=connect(a.db)
     if a.command=='report':print(json.dumps(report.build(db),ensure_ascii=False,indent=2));return

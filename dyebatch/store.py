@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS rework_cost(id TEXT PRIMARY KEY,order_id TEXT NOT NUL
 CREATE TABLE IF NOT EXISTS rework_liability(cost_id TEXT PRIMARY KEY,order_id TEXT NOT NULL,liable_party TEXT NOT NULL,state TEXT NOT NULL,reason TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS future_recipe_permission(order_id TEXT PRIMARY KEY,state TEXT NOT NULL,reason TEXT NOT NULL,shade_version INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS decision_history(id INTEGER PRIMARY KEY,subsystem TEXT NOT NULL,order_id TEXT NOT NULL,state TEXT NOT NULL,reason TEXT NOT NULL,source_id TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS register_round(session TEXT NOT NULL,round_no INTEGER NOT NULL,anchor INTEGER,format TEXT,certificate TEXT,excerpt_id TEXT NOT NULL,archive_used INTEGER NOT NULL DEFAULT 0,diagnostic_used INTEGER NOT NULL DEFAULT 0,PRIMARY KEY(session,round_no));
+CREATE TABLE IF NOT EXISTS register_word(session TEXT NOT NULL,round_no INTEGER NOT NULL,seq INTEGER NOT NULL,word INTEGER NOT NULL,page INTEGER NOT NULL,record_id TEXT,decoded INTEGER,base INTEGER,delivered INTEGER NOT NULL DEFAULT 0,PRIMARY KEY(session,round_no,seq));
 """
 def connect(path):
     db=sqlite3.connect(path);db.row_factory=sqlite3.Row;db.executescript(SCHEMA);return db
